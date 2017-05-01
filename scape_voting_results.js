@@ -3,6 +3,7 @@
 
 const googleTrends = require('google-trends-api');
 
+
 /*
  * Election: 2016 UK vot to withdraw from the European Union
  * Survey from: Dec 23, 2015 - June 23, 2016
@@ -16,21 +17,6 @@ const googleTrends = require('google-trends-api');
 
 
 
-/*
- * Election: 2016 US Presidential Election
- * Survey from: Nov 7, 2016 - May 7, 2016
- * Poll Day: Nov 8, 2016
- * Key Words: Hilary Clinton, Donald Trump 
- * Geo: US
- * Language Code: en-US
- * Winner: Trump 
- */
-optionsObject = 
-	{'keyword':'trump', 
-	'startTime' : new Date(year=2016)};
-
-
-googleTrends.apiMethod(optionsObject, [callback]);
 
 /*
  * Election: French Presidenial Election
