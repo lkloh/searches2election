@@ -17,19 +17,27 @@ var valentineDayObj =
 
 
 console.log("\nInterest from past two days (April / May 2017)");
-googleTrends.interestOverTime(valentineObjLastTwoDays, scrapeData.getAverageInterest);
+//googleTrends.interestOverTime(valentineObjLastTwoDays, scrapeData.getAverageInterest);
 
 
 console.log("\nInterest from just before Valentines Day 2017: ");
-googleTrends.interestOverTime(valentineDayObj, scrapeData.getAverageInterest);
+//googleTrends.interestOverTime(valentineDayObj, scrapeData.getAverageInterest);
 
 
 // Average Interest around Valentine's Day: 48.672222222222224
 // Average Interest around May 2017: 14.089385474860336
 
-
-
-
+googleTrends.relatedQueries(valentineDayObj)
+	.then(function(results) {
+	  	var jsonObj = JSON.parse(results);
+	  	var relatedQueryList = jsonObj['default']['rankedList'][0]['rankedKeyword'];
+		for (var i = 0; i < relatedQueryList.length; i++) {
+			console.log(relatedQueryList[i]);
+		}
+	})
+	.catch(function(err) {
+	  console.log(err);
+	});
 
 
 

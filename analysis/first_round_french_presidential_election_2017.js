@@ -13,6 +13,7 @@ var scrapeData = require("./trendsFunction.js");
  * Geo: FR
  * Language Code: fr-FR
  * Result: Macron gets the most votes, then Le Pen
+ * Ne pas voter pour <name>
  */
 
 var March21_start = new Date(year=2017, month=2, day=21, hours=0, minutes=0, seconds=0, milliseconds=0);
@@ -64,6 +65,21 @@ googleTrends.interestOverTime(melenchon_interest, scrapeData.getAverageInterest)
 
 
 
+
+
+// marine le len's Related query value: 940
+googleTrends.relatedQueries(le_pen_interest)
+	.then(scrapeData.getRelatedQueriesInterest)
+	.catch(function(err) {
+	  console.log(err);
+	});
+
+// Emmanuel Macron's Related query value: 1020
+googleTrends.relatedQueries(macron_interest)
+	.then(scrapeData.getRelatedQueriesInterest)
+	.catch(function(err) {
+	  console.log(err);
+	});
 
 
 

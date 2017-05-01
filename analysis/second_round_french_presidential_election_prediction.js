@@ -12,7 +12,8 @@ var scrapeData = require("./trendsFunction.js");
  * Key Words: Emmanuel Macron, Marine Le Pen
  * Geo: FR
  * Language Code: fr-FR
- * Predicted Result: Marine Le Pen wins
+ * Predicted Result: Marine Le Pen wins??
+ * Date prediction was made: May 1, 2017 
  */
 
 
@@ -40,6 +41,19 @@ googleTrends.interestOverTime(le_pen_interest, scrapeData.getAverageInterest);
 
 
 
+// marine le len's Related query value: 810
+googleTrends.relatedQueries(le_pen_interest)
+	.then(scrapeData.getRelatedQueriesInterest)
+	.catch(function(err) {
+	  console.log(err);
+	});
+
+// Emmanuel Macron's Related query value: 495
+googleTrends.relatedQueries(macron_interest)
+	.then(scrapeData.getRelatedQueriesInterest)
+	.catch(function(err) {
+	  console.log(err);
+	});
 
 
 

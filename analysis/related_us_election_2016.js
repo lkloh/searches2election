@@ -16,26 +16,35 @@ var Oct7_2016_start = new Date(year=2016, month=9, day=7, hours=0, minutes=0, se
 var Nov7_2016_end = new Date(year=2016, month=10, day=7, hours=23, minutes=59, seconds=0, milliseconds=0);
 
 var donald_trump_interest = 
-	{keyword: 'Donald Trump', 
+	{keyword: "trump", 
 	startTime: Oct7_2016_start,
 	endTime: Nov7_2016_end,
 	geo: 'US',
 	hl: 'en-US'};
 
 var hillary_clinton_interest = 
-	{keyword: 'Hillary Clinton', 
+	{keyword: "hate Clinton", 
 	startTime: Oct7_2016_start,
 	endTime: Nov7_2016_end,
 	geo: 'US',
 	hl: 'en-US'};
 
 
-// Trump's Interest data: 44.57575757575758
-googleTrends.interestOverTime(donald_trump_interest, scrapeData.getAverageInterest);
+// value of related queries in trump: 450
+googleTrends.relatedQueries(donald_trump_interest)
+	.then(scrapeData.getRelatedQueriesInterest)
+	.catch(function(err) {
+	  console.log(err);
+	});
 
+// value of related queries in clinton: 135
+googleTrends.relatedQueries(hillary_clinton_interest)
+	.then(scrapeData.getRelatedQueriesInterest)
+	.catch(function(err) {
+	  console.log(err);
+	});
 
-// Clinton's Interest data: 38.36363636363637
-googleTrends.interestOverTime(hillary_clinton_interest, scrapeData.getAverageInterest);
+//googleTrends.interestOverTime(hillary_clinton_interest, scrapeData.getAverageInterest);
 
 
 

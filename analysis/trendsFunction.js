@@ -1,8 +1,7 @@
 
 
 
-module.exports.getAverageInterest = 
-	function(err, results) {
+module.exports.getAverageInterest = function(err, results) {
   		if (err) {
   			console.log('oh no error!', err);
   		} else {
@@ -20,6 +19,20 @@ module.exports.getAverageInterest =
   			console.log("Average Interest: " + totalInterest / totalResults);
   		}
 	};
+
+  module.exports.getRelatedQueriesInterest = function(results) {
+    var jsonObj = JSON.parse(results);
+    var relatedQueryList = jsonObj['default']['rankedList'][0]['rankedKeyword'];
+    var totalValue = 0;
+    for (var i = 0; i < relatedQueryList.length; i++) {
+        var query = relatedQueryList[i];
+        var value = query['value'];
+        totalValue += value;
+    }
+    console.log("Total value: " + totalValue);
+  }
+
+
 
 
 
